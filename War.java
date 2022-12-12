@@ -54,10 +54,29 @@ public class War
             }
             round++;
         }
+        if (p1.getDeckSize() > p2.getDeckSize() || p2.getDeckSize() == 0) {
+            System.out.println("Player 1 wins");
+        } else if (p2.getDeckSize() > p1.getDeckSize() || p1.getDeckSize() == 0) {
+            System.out.println("Player 2 wins");
+        }
     }
     
     public void war(Deck p1, Deck p2, Card pl1, Card pl2) {
         System.out.println("War");
+        if (p1.getDeckSize() >= 4 && p2.getDeckSize() >= 4) {
+            CardsForGrab.addCardToDeck(pl1);
+            CardsForGrab.addCardToDeck(pl2);
+            for (int i = 0; i < 3; i++) {
+                CardsForGrab.addCardToDeck(p1.dealCardFromDeck());
+            }
+            for (int i = 0; i < 3; i++) {
+                CardsForGrab.addCardToDeck(p2.dealCardFromDeck());
+            }
+            Card pl1t = p1.dealCardFromDeck();
+            Card pl2t = p2.dealCardFromDeck();
+            CardsForGrab.addCardToDeck(pl1t);
+            CardsForGrab.Deck(pl2t);
+        }
     }
     
     /**
